@@ -1,6 +1,10 @@
 const express = require('express');
 const productsController = require('../controllers/products');
 const productsRouter =express.Router();
-productsRouter.post('/add',productsController.addProduct);
-productsRouter.get('/view',productsController.viewProducts);
+const {authenticateToken} = require('../middleware/authenticate');
+productsRouter.post('/cart',authenticateToken,productsController.addCart);
+productsRouter.post('/add',authenticateToken,productsController.addProduct);
+productsRouter.get('/view',authenticateToken,productsController.viewProducts);
+productsRouter.get('/viewCartByEmail',authenticateToken,productsController.viewCartByEmail);
+productsRouter.get('/totalOrderByProductName',authenticateToken,productsController.totalOrderByProductName);
 module.exports=productsRouter;
