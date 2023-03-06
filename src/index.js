@@ -2,7 +2,7 @@ const express = require('express');
 const usersRouter = require('./routers/users');
 const productsRouter = require('./routers/products');
 const app = express();
-const PORT = 5679;
+const PORT = 8000;
 app.use(express.json());
 app.use('/users',usersRouter);
 app.use('/products',productsRouter);

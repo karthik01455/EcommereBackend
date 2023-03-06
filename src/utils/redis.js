@@ -1,6 +1,13 @@
 const redis = require('redis');
 const { createClient } = require('redis');
-const redisClient = createClient('redis://localhost:6379');
+const config = {
+  socket: {
+    host: 'docker.for.mac.localhost',
+    port: 6379,
+  },
+};
+
+const redisClient = createClient(config);
 const redisConnection=redisClient.connect();
 redisConnection.then((value)=>{
   console.log('connected to redis');
